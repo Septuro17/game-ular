@@ -1,52 +1,26 @@
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
-  background-color: #f0f0f0;
-  margin: 0;
-}
-
-.container {
-  text-align: center;
-}
-
-canvas {
-  border: 2px solid #000;
-  background-color: #fff;
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 5px;
-  font-size: 16px;
-}
-
-button:hover {
-  background-color: #218838;
-}
-
-.controls {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.controls div {
-  display: flex;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Ular dengan Rintangan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Game Ular</h1>
+        <canvas id="snakeGame"></canvas>
+        <p id="score">Skor: 0</p>
+        <button id="startBtn">Mulai</button>
+        <div class="controls">
+            <button id="upBtn">↑</button>
+            <div>
+                <button id="leftBtn">←</button>
+                <button id="rightBtn">→</button>
+            </div>
+            <button id="downBtn">↓</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
