@@ -1,9 +1,11 @@
 const canvas = document.getElementById("snakeGame");
 const ctx = canvas.getContext("2d");
 const box = 20;
-canvas.width = Math.min(window.innerWidth, 400); // Set width responsif
-canvas.height = Math.min(window.innerHeight - 200, 400); // Set height responsif
+canvas.width = Math.min(window.innerWidth, 400);
+canvas.height = Math.min(window.innerHeight - 200, 400);
 let score = 0;
+let level = 1;
+let maxLevel = 10;
 
 let snake = [{ x: 9 * box, y: 9 * box }];
 let food = generateFood();
@@ -66,6 +68,18 @@ function draw() {
   if (snakeX === food.x && snakeY === food.y) {
     score++;
     food = generateFood();
+
+    if (score % 5 === 0) {
+      level++;
+      if (level > maxLevel) {
+        clearInterval(game);
+        alert("Selamat! Anda telah menyelesaikan semua level.");
+        return;
+      } else {
+        alert("Level " + level + " Selesai! Lanjut ke Level " + level);
+        increaseDifficulty();
+      }
+    }
   } else {
     snake.pop();
   }
@@ -85,7 +99,8 @@ function draw() {
   }
 
   snake.unshift(newHead);
-  document.getElementById("score").innerText = "Skor: " + score;
+  document.getElementById("score").innerText =
+    "Skor: " + score + " | Level: " + level;
 }
 
 function collision(head, array) {
@@ -116,9 +131,16 @@ function generateObstacles(num) {
   return obstacles;
 }
 
+function increaseDifficulty() {
+  clearInterval(game);
+  game = setInterval(draw, 100 - level * 5);
+  obstacles = generateObstacles(5 + level);
+}
+
 let game;
 document.getElementById("startBtn").addEventListener("click", () => {
   score = 0;
+  level = 1;
   snake = [{ x: 9 * box, y: 9 * box }];
   food = generateFood();
   obstacles = generateObstacles(5);
