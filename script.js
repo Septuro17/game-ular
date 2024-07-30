@@ -133,8 +133,8 @@ function generateObstacles(num) {
 
 function increaseDifficulty() {
   clearInterval(game);
-  game = setInterval(draw, 100 - level * 5);
-  obstacles = generateObstacles(5 + level);
+  game = setInterval(draw, 150 - level * 5);
+  obstacles = generateObstacles(3 + level);
 }
 
 let game;
